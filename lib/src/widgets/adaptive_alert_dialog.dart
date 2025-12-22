@@ -71,6 +71,7 @@ class AdaptiveAlertDialog {
 
       return showCupertinoDialog<void>(
         context: context,
+        barrierColor: Colors.transparent,
         builder: (context) => IOS26AlertDialog(
           title: title,
           message: message,
@@ -94,47 +95,30 @@ class AdaptiveAlertDialog {
           // Build custom content if icon or OTP is present
           if (icon != null || oneTimeCode != null || message != null) {
             contentWidget = ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: 60, maxHeight: 300),
+              constraints: const BoxConstraints(maxHeight: 300),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    if (icon != null &&
-                        icon is IconData &&
-                        iconSize != null) ...[
-                      Icon(
-                        icon,
-                        size: iconSize,
-                        color: iconColor ?? CupertinoColors.systemBlue,
-                      ),
+                    if (icon != null && icon is IconData && iconSize != null) ...[
+                      Icon(icon, size: iconSize, color: iconColor ?? CupertinoColors.systemBlue),
                       const SizedBox(height: 8),
                     ],
                     if (message != null) ...[
-                      Text(
-                        message,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 13),
-                      ),
+                      Text(message, textAlign: TextAlign.center, style: const TextStyle(fontSize: 13)),
                       const SizedBox(height: 12),
                     ],
                     if (oneTimeCode != null) ...[
                       Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         decoration: BoxDecoration(
                           color: CupertinoColors.systemGrey6,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
                           oneTimeCode,
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Courier',
-                          ),
+                          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, fontFamily: 'Courier'),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -149,10 +133,7 @@ class AdaptiveAlertDialog {
           return CupertinoAlertDialog(
             title: Text(title),
             content: contentWidget != null
-                ? Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: contentWidget,
-                  )
+                ? Padding(padding: const EdgeInsets.only(top: 8), child: contentWidget)
                 : null,
             actions: actions.map((action) {
               return CupertinoDialogAction(
@@ -161,8 +142,7 @@ class AdaptiveAlertDialog {
                   action.onPressed();
                 },
                 isDefaultAction: action.style == AlertActionStyle.primary,
-                isDestructiveAction:
-                    action.style == AlertActionStyle.destructive,
+                isDestructiveAction: action.style == AlertActionStyle.destructive,
                 child: Text(action.title),
               );
             }).toList(),
@@ -211,6 +191,8 @@ class AdaptiveAlertDialog {
 
       return showCupertinoDialog<String?>(
         context: context,
+        barrierColor: Colors.transparent,
+
         builder: (context) => IOS26AlertDialog(
           title: title,
           message: message,
@@ -242,19 +224,11 @@ class AdaptiveAlertDialog {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   if (icon != null && icon is IconData && iconSize != null) ...[
-                    Icon(
-                      icon,
-                      size: iconSize,
-                      color: iconColor ?? CupertinoColors.systemBlue,
-                    ),
+                    Icon(icon, size: iconSize, color: iconColor ?? CupertinoColors.systemBlue),
                     const SizedBox(height: 8),
                   ],
                   if (message != null) ...[
-                    Text(
-                      message,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 13),
-                    ),
+                    Text(message, textAlign: TextAlign.center, style: const TextStyle(fontSize: 13)),
                     const SizedBox(height: 12),
                   ],
                   CupertinoTextField(
@@ -273,10 +247,7 @@ class AdaptiveAlertDialog {
 
           return CupertinoAlertDialog(
             title: Text(title),
-            content: Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: contentWidget,
-            ),
+            content: Padding(padding: const EdgeInsets.only(top: 8), child: contentWidget),
             actions: actions.map((action) {
               return CupertinoDialogAction(
                 onPressed: () {
@@ -286,15 +257,12 @@ class AdaptiveAlertDialog {
                   } else {
                     // Other buttons return the entered text
                     final text = textController.text.trim();
-                    Navigator.of(
-                      context,
-                    ).pop<String?>(text.isNotEmpty ? text : null);
+                    Navigator.of(context).pop<String?>(text.isNotEmpty ? text : null);
                   }
                   action.onPressed();
                 },
                 isDefaultAction: action.style == AlertActionStyle.primary,
-                isDestructiveAction:
-                    action.style == AlertActionStyle.destructive,
+                isDestructiveAction: action.style == AlertActionStyle.destructive,
                 child: Text(action.title),
               );
             }).toList(),
@@ -336,10 +304,7 @@ class AdaptiveAlertDialog {
       builder: (context) {
         // Build custom content if icon, OTP, or textfield is present
         Widget? contentWidget;
-        if (icon != null ||
-            oneTimeCode != null ||
-            message != null ||
-            input != null) {
+        if (icon != null || oneTimeCode != null || message != null || input != null) {
           contentWidget = Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -347,20 +312,11 @@ class AdaptiveAlertDialog {
                 Icon(icon, size: iconSize, color: iconColor ?? Colors.blue),
                 const SizedBox(height: 12),
               ],
-              if (message != null) ...[
-                Text(message, textAlign: TextAlign.center),
-                const SizedBox(height: 16),
-              ],
+              if (message != null) ...[Text(message, textAlign: TextAlign.center), const SizedBox(height: 16)],
               if (oneTimeCode != null) ...[
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 12,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  decoration: BoxDecoration(color: Colors.grey.shade200, borderRadius: BorderRadius.circular(8)),
                   child: Text(
                     oneTimeCode,
                     style: const TextStyle(
@@ -376,10 +332,7 @@ class AdaptiveAlertDialog {
               if (input != null) ...[
                 TextField(
                   controller: textController,
-                  decoration: InputDecoration(
-                    hintText: input.placeholder,
-                    border: const OutlineInputBorder(),
-                  ),
+                  decoration: InputDecoration(hintText: input.placeholder, border: const OutlineInputBorder()),
                   keyboardType: input.keyboardType,
                   obscureText: input.obscureText,
                   maxLength: input.maxLength,
@@ -391,9 +344,7 @@ class AdaptiveAlertDialog {
         }
 
         // Separate actions by type
-        final normalActions = actions
-            .where((a) => a.style != AlertActionStyle.cancel)
-            .toList();
+        final normalActions = actions.where((a) => a.style != AlertActionStyle.cancel).toList();
         final cancelAction = actions.firstWhere(
           (a) => a.style == AlertActionStyle.cancel,
           orElse: () => AlertAction(
@@ -435,9 +386,7 @@ class AdaptiveAlertDialog {
                         if (input != null) {
                           // Input dialog - return the text
                           final text = textController.text.trim();
-                          Navigator.of(
-                            context,
-                          ).pop<String?>(text.isNotEmpty ? text : null);
+                          Navigator.of(context).pop<String?>(text.isNotEmpty ? text : null);
                         } else {
                           // Normal dialog - just close
                           Navigator.of(context).pop();
@@ -445,9 +394,7 @@ class AdaptiveAlertDialog {
                         action.onPressed();
                       }
                     : null,
-                style: buttonColor != null
-                    ? TextButton.styleFrom(foregroundColor: buttonColor)
-                    : null,
+                style: buttonColor != null ? TextButton.styleFrom(foregroundColor: buttonColor) : null,
                 child: Text(action.title),
               );
             }),

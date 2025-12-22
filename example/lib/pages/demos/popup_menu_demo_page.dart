@@ -1,3 +1,4 @@
+import 'package:adaptive_platform_ui_example/utils/extensions/extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
@@ -18,10 +19,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       appBar: AdaptiveAppBar(title: 'Popup Menu Demo'),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: _buildContent(),
-      ),
+      body: ListView(padding: const EdgeInsets.all(16), children: _buildContent()),
     );
   }
 
@@ -45,9 +43,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                color: PlatformInfo.isIOS
-                    ? CupertinoColors.systemGrey
-                    : Theme.of(context).colorScheme.onSurfaceVariant,
+                color: PlatformInfo.isIOS ? CupertinoColors.systemGrey : Theme.of(context).colorScheme.onSurfaceVariant,
               ),
             ),
             const SizedBox(height: 4),
@@ -57,8 +53,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
                 color: PlatformInfo.isIOS
-                    ? (MediaQuery.platformBrightnessOf(context) ==
-                              Brightness.dark
+                    ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark
                           ? CupertinoColors.white
                           : CupertinoColors.black)
                     : Theme.of(context).colorScheme.onSurface,
@@ -180,9 +175,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
             Column(
               children: [
                 AdaptivePopupMenuButton.icon<String>(
-                  icon: PlatformInfo.isIOS26OrHigher()
-                      ? 'ellipsis.circle'
-                      : Icons.more_horiz,
+                  icon: PlatformInfo.isIOS26OrHigher() ? 'ellipsis.circle' : Icons.more_horiz,
                   items: _iconMenuItems(),
                   onSelected: (index, item) {
                     setState(() {
@@ -198,8 +191,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                   style: TextStyle(
                     fontSize: 12,
                     color: PlatformInfo.isIOS
-                        ? (MediaQuery.platformBrightnessOf(context) ==
-                                  Brightness.dark
+                        ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark
                               ? CupertinoColors.systemGrey
                               : CupertinoColors.systemGrey2)
                         : Theme.of(context).colorScheme.onSurfaceVariant,
@@ -210,9 +202,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
             Column(
               children: [
                 AdaptivePopupMenuButton.icon<String>(
-                  icon: PlatformInfo.isIOS26OrHigher()
-                      ? 'gear'
-                      : Icons.settings,
+                  icon: PlatformInfo.isIOS26OrHigher() ? 'gear' : Icons.settings,
                   items: _iconMenuItems(),
                   onSelected: (index, item) {
                     setState(() {
@@ -229,8 +219,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                   style: TextStyle(
                     fontSize: 12,
                     color: PlatformInfo.isIOS
-                        ? (MediaQuery.platformBrightnessOf(context) ==
-                                  Brightness.dark
+                        ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark
                               ? CupertinoColors.systemGrey
                               : CupertinoColors.systemGrey2)
                         : Theme.of(context).colorScheme.onSurfaceVariant,
@@ -241,9 +230,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
             Column(
               children: [
                 AdaptivePopupMenuButton.icon<String>(
-                  icon: PlatformInfo.isIOS26OrHigher()
-                      ? 'square.and.arrow.up'
-                      : Icons.share,
+                  icon: PlatformInfo.isIOS26OrHigher() ? 'square.and.arrow.up' : Icons.share,
                   items: _iconMenuItems(),
                   onSelected: (index, item) {
                     setState(() {
@@ -260,8 +247,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                   style: TextStyle(
                     fontSize: 12,
                     color: PlatformInfo.isIOS
-                        ? (MediaQuery.platformBrightnessOf(context) ==
-                                  Brightness.dark
+                        ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark
                               ? CupertinoColors.systemGrey
                               : CupertinoColors.systemGrey2)
                         : Theme.of(context).colorScheme.onSurfaceVariant,
@@ -272,9 +258,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
             Column(
               children: [
                 AdaptivePopupMenuButton.icon<String>(
-                  icon: PlatformInfo.isIOS26OrHigher()
-                      ? 'star.fill'
-                      : Icons.star,
+                  icon: PlatformInfo.isIOS26OrHigher() ? 'star.fill' : Icons.star,
                   items: _iconMenuItems(),
                   onSelected: (index, item) {
                     setState(() {
@@ -290,8 +274,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                   style: TextStyle(
                     fontSize: 12,
                     color: PlatformInfo.isIOS
-                        ? (MediaQuery.platformBrightnessOf(context) ==
-                                  Brightness.dark
+                        ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark
                               ? CupertinoColors.systemGrey
                               : CupertinoColors.systemGrey2)
                         : Theme.of(context).colorScheme.onSurfaceVariant,
@@ -332,8 +315,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                   setState(() {
                     if (item.value == 'toggle_mode') {
                       _editMode = !_editMode;
-                      _selectedAction =
-                          'Switched to ${_editMode ? "Edit" : "View"} mode';
+                      _selectedAction = 'Switched to ${_editMode ? "Edit" : "View"} mode';
                     } else {
                       _selectedAction = item.label;
                     }
@@ -344,19 +326,14 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
               ),
               const SizedBox(width: 16),
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
                   color: _editMode
-                      ? CupertinoColors.systemYellow.withOpacity(0.2)
-                      : CupertinoColors.systemGreen.withOpacity(0.2),
+                      ? CupertinoColors.systemYellow.withOpacityValue(0.2)
+                      : CupertinoColors.systemGreen.withOpacityValue(0.2),
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: _editMode
-                        ? CupertinoColors.systemYellow
-                        : CupertinoColors.systemGreen,
+                    color: _editMode ? CupertinoColors.systemYellow : CupertinoColors.systemGreen,
                     width: 1,
                   ),
                 ),
@@ -365,9 +342,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: _editMode
-                        ? CupertinoColors.systemYellow
-                        : CupertinoColors.systemGreen,
+                    color: _editMode ? CupertinoColors.systemYellow : CupertinoColors.systemGreen,
                   ),
                 ),
               ),
@@ -386,9 +361,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
             items: [
               AdaptivePopupMenuItem(
                 label: 'New',
-                icon: PlatformInfo.isIOS26OrHigher()
-                    ? 'doc.badge.plus'
-                    : Icons.add,
+                icon: PlatformInfo.isIOS26OrHigher() ? 'doc.badge.plus' : Icons.add,
                 value: 'new',
               ),
               AdaptivePopupMenuItem(
@@ -399,16 +372,12 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
               AdaptivePopupMenuDivider(),
               AdaptivePopupMenuItem(
                 label: 'Save',
-                icon: PlatformInfo.isIOS26OrHigher()
-                    ? 'square.and.arrow.down'
-                    : Icons.save,
+                icon: PlatformInfo.isIOS26OrHigher() ? 'square.and.arrow.down' : Icons.save,
                 value: 'save',
               ),
               AdaptivePopupMenuItem(
                 label: 'Save As...',
-                icon: PlatformInfo.isIOS26OrHigher()
-                    ? 'square.and.arrow.down.on.square'
-                    : Icons.save_as_sharp,
+                icon: PlatformInfo.isIOS26OrHigher() ? 'square.and.arrow.down.on.square' : Icons.save_as_sharp,
                 value: 'save_as',
               ),
               AdaptivePopupMenuDivider(),
@@ -439,32 +408,24 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
               ),
               AdaptivePopupMenuItem(
                 label: 'Copy',
-                icon: PlatformInfo.isIOS26OrHigher()
-                    ? 'doc.on.doc'
-                    : Icons.copy,
+                icon: PlatformInfo.isIOS26OrHigher() ? 'doc.on.doc' : Icons.copy,
                 value: 'copy',
               ),
               AdaptivePopupMenuItem(
                 label: 'Paste',
-                icon: PlatformInfo.isIOS26OrHigher()
-                    ? 'doc.on.clipboard'
-                    : Icons.paste,
+                icon: PlatformInfo.isIOS26OrHigher() ? 'doc.on.clipboard' : Icons.paste,
                 value: 'paste',
                 enabled: false,
               ),
               AdaptivePopupMenuDivider(),
               AdaptivePopupMenuItem(
                 label: 'Select All',
-                icon: PlatformInfo.isIOS26OrHigher()
-                    ? 'selection.pin.in.out'
-                    : Icons.select_all,
+                icon: PlatformInfo.isIOS26OrHigher() ? 'selection.pin.in.out' : Icons.select_all,
                 value: 'select_all',
               ),
               AdaptivePopupMenuItem(
                 label: 'Undo',
-                icon: PlatformInfo.isIOS26OrHigher()
-                    ? 'arrow.uturn.backward'
-                    : Icons.undo,
+                icon: PlatformInfo.isIOS26OrHigher() ? 'arrow.uturn.backward' : Icons.undo,
                 value: 'undo',
                 enabled: false,
               ),
@@ -485,9 +446,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
             items: [
               AdaptivePopupMenuItem(
                 label: 'Share',
-                icon: PlatformInfo.isIOS26OrHigher()
-                    ? 'square.and.arrow.up'
-                    : Icons.share,
+                icon: PlatformInfo.isIOS26OrHigher() ? 'square.and.arrow.up' : Icons.share,
                 value: 'share',
               ),
               AdaptivePopupMenuItem(
@@ -503,9 +462,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
               AdaptivePopupMenuDivider(),
               AdaptivePopupMenuItem(
                 label: 'Report',
-                icon: PlatformInfo.isIOS26OrHigher()
-                    ? 'exclamationmark.triangle'
-                    : Icons.report,
+                icon: PlatformInfo.isIOS26OrHigher() ? 'exclamationmark.triangle' : Icons.report,
                 value: 'report',
               ),
               AdaptivePopupMenuItem(
@@ -615,13 +572,9 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    PlatformInfo.isIOS
-                        ? CupertinoIcons.ellipsis_circle
-                        : Icons.more_horiz,
+                    PlatformInfo.isIOS ? CupertinoIcons.ellipsis_circle : Icons.more_horiz,
                     size: 18,
-                    color: PlatformInfo.isIOS
-                        ? CupertinoColors.systemBlue
-                        : Theme.of(context).colorScheme.primary,
+                    color: PlatformInfo.isIOS ? CupertinoColors.systemBlue : Theme.of(context).colorScheme.primary,
                   ),
                   const SizedBox(width: 8),
                   Text(
@@ -629,8 +582,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                     style: TextStyle(
                       fontSize: 16,
                       color: PlatformInfo.isIOS
-                          ? (MediaQuery.platformBrightnessOf(context) ==
-                                    Brightness.dark
+                          ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark
                                 ? CupertinoColors.white
                                 : CupertinoColors.black)
                           : Theme.of(context).colorScheme.onSurface,
@@ -657,16 +609,14 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: PlatformInfo.isIOS
-                    ? (MediaQuery.platformBrightnessOf(context) ==
-                              Brightness.dark
+                    ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark
                           ? CupertinoColors.darkBackgroundGray
                           : CupertinoColors.white)
                     : Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                   color: PlatformInfo.isIOS
-                      ? (MediaQuery.platformBrightnessOf(context) ==
-                                Brightness.dark
+                      ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark
                             ? CupertinoColors.systemGrey4
                             : CupertinoColors.separator)
                       : Theme.of(context).colorScheme.outline,
@@ -681,13 +631,11 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                     width: 36,
                     height: 36,
                     decoration: BoxDecoration(
-                      color: CupertinoColors.systemPurple.withOpacity(0.1),
+                      color: CupertinoColors.systemPurple.withOpacityValue(0.1),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(
-                      PlatformInfo.isIOS
-                          ? CupertinoIcons.square_grid_2x2
-                          : Icons.apps,
+                      PlatformInfo.isIOS ? CupertinoIcons.square_grid_2x2 : Icons.apps,
                       color: CupertinoColors.systemPurple,
                       size: 20,
                     ),
@@ -703,8 +651,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: PlatformInfo.isIOS
-                              ? (MediaQuery.platformBrightnessOf(context) ==
-                                        Brightness.dark
+                              ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark
                                     ? CupertinoColors.white
                                     : CupertinoColors.black)
                               : Theme.of(context).colorScheme.onSurface,
@@ -724,9 +671,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
                   ),
                   const SizedBox(width: 8),
                   Icon(
-                    PlatformInfo.isIOS
-                        ? CupertinoIcons.chevron_down
-                        : Icons.arrow_drop_down,
+                    PlatformInfo.isIOS ? CupertinoIcons.chevron_down : Icons.arrow_drop_down,
                     size: 20,
                     color: PlatformInfo.isIOS
                         ? CupertinoColors.systemGrey
@@ -751,16 +696,11 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    CupertinoColors.systemBlue,
-                    CupertinoColors.systemPurple,
-                  ],
-                ),
+                gradient: LinearGradient(colors: [CupertinoColors.systemBlue, CupertinoColors.systemPurple]),
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: CupertinoColors.systemBlue.withOpacity(0.3),
+                    color: CupertinoColors.systemBlue.withOpacityValue(0.3),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -769,19 +709,11 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(
-                    CupertinoIcons.sparkles,
-                    size: 18,
-                    color: Colors.white,
-                  ),
+                  const Icon(CupertinoIcons.sparkles, size: 18, color: Colors.white),
                   const SizedBox(width: 8),
                   const Text(
                     'Premium Options',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.white),
                   ),
                 ],
               ),
@@ -802,9 +734,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: PlatformInfo.isIOS
-                ? CupertinoColors.label
-                : Theme.of(context).colorScheme.onSurface,
+            color: PlatformInfo.isIOS ? CupertinoColors.label : Theme.of(context).colorScheme.onSurface,
           ),
         ),
         const SizedBox(height: 12),
@@ -825,8 +755,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
               style: TextStyle(
                 fontSize: 15,
                 color: PlatformInfo.isIOS
-                    ? (MediaQuery.platformBrightnessOf(context) ==
-                              Brightness.dark
+                    ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark
                           ? CupertinoColors.white
                           : CupertinoColors.black)
                     : Theme.of(context).colorScheme.onSurface,
@@ -842,10 +771,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
   List<AdaptivePopupMenuEntry> _basicMenuItems() {
     return const [
       AdaptivePopupMenuItem(label: 'Option 1', value: 'opt1'),
-      AdaptivePopupMenuItem(
-        label: 'Option  Option  Option  Option 2',
-        value: 'Option  Option  Option 2',
-      ),
+      AdaptivePopupMenuItem(label: 'Option  Option  Option  Option 2', value: 'Option  Option  Option 2'),
       AdaptivePopupMenuItem(label: 'Option 3', value: 'opt3'),
     ];
   }
@@ -859,9 +785,7 @@ class _PopupMenuDemoPageState extends State<PopupMenuDemoPage> {
       ),
       AdaptivePopupMenuItem(
         label: 'Share',
-        icon: PlatformInfo.isIOS26OrHigher()
-            ? 'square.and.arrow.up'
-            : Icons.share,
+        icon: PlatformInfo.isIOS26OrHigher() ? 'square.and.arrow.up' : Icons.share,
         value: 'share',
       ),
       AdaptivePopupMenuItem(

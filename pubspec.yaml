@@ -4,7 +4,6 @@ version: 0.1.100
 homepage: https://github.com/berkaycatak/adaptive_platform_ui
 screenshots:
   - description: "iOS 26+ liquid glass designs"
-    path: img/liquid-glass-demo.png
 
 environment:
   sdk: ^3.9.2

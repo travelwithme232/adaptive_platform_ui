@@ -9,10 +9,7 @@ class AlertDialogDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
       appBar: AdaptiveAppBar(title: 'Alert Dialog'),
       body: _buildBody(context),
     );
@@ -22,12 +19,7 @@ class AlertDialogDemoPage extends StatelessWidget {
     final topPadding = PlatformInfo.isIOS ? 100.0 : 16.0;
 
     return ListView(
-      padding: EdgeInsets.only(
-        left: 16.0,
-        right: 16.0,
-        top: topPadding,
-        bottom: 16.0,
-      ),
+      padding: EdgeInsets.only(left: 16.0, right: 16.0, top: topPadding, bottom: 16.0),
       children: [
         _buildSection(
           context,
@@ -97,11 +89,7 @@ class AlertDialogDemoPage extends StatelessWidget {
               description: 'Alert with error icon',
               onTap: () => _showErrorAlert(context),
             ),
-            _DemoItem(
-              title: 'Info Alert',
-              description: 'Alert with info icon',
-              onTap: () => _showInfoAlert(context),
-            ),
+            _DemoItem(title: 'Info Alert', description: 'Alert with info icon', onTap: () => _showInfoAlert(context)),
           ],
         ),
         const SizedBox(height: 24),
@@ -139,10 +127,10 @@ class AlertDialogDemoPage extends StatelessWidget {
         const SizedBox(height: 24),
         _buildSection(
           context,
-          title: 'Complex Scenarios',
+          title: 'Compladsex Scenarios',
           items: [
             _DemoItem(
-              title: 'Confirmation Dialog',
+              title: 'Confirmaasdtion Dialog',
               description: 'Yes/No confirmation dialog',
               onTap: () => _showConfirmationDialog(context),
             ),
@@ -162,11 +150,7 @@ class AlertDialogDemoPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSection(
-    BuildContext context, {
-    required String title,
-    required List<_DemoItem> items,
-  }) {
+  Widget _buildSection(BuildContext context, {required String title, required List<_DemoItem> items}) {
     final isDark = PlatformInfo.isIOS
         ? MediaQuery.platformBrightnessOf(context) == Brightness.dark
         : Theme.of(context).brightness == Brightness.dark;
@@ -194,8 +178,7 @@ class AlertDialogDemoPage extends StatelessWidget {
 
   Widget _buildDemoItem(BuildContext context, _DemoItem item) {
     if (PlatformInfo.isIOS) {
-      final isDark =
-          MediaQuery.platformBrightnessOf(context) == Brightness.dark;
+      final isDark = MediaQuery.platformBrightnessOf(context) == Brightness.dark;
 
       return Container(
         margin: const EdgeInsets.only(bottom: 12),
@@ -204,16 +187,9 @@ class AlertDialogDemoPage extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: isDark
-                  ? CupertinoColors.darkBackgroundGray
-                  : CupertinoColors.white,
+              color: isDark ? CupertinoColors.darkBackgroundGray : CupertinoColors.white,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: isDark
-                    ? CupertinoColors.systemGrey4
-                    : CupertinoColors.separator,
-                width: 0.5,
-              ),
+              border: Border.all(color: isDark ? CupertinoColors.systemGrey4 : CupertinoColors.separator, width: 0.5),
             ),
             child: Row(
               children: [
@@ -226,9 +202,7 @@ class AlertDialogDemoPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
-                          color: isDark
-                              ? CupertinoColors.white
-                              : CupertinoColors.black,
+                          color: isDark ? CupertinoColors.white : CupertinoColors.black,
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -236,19 +210,13 @@ class AlertDialogDemoPage extends StatelessWidget {
                         item.description,
                         style: TextStyle(
                           fontSize: 13,
-                          color: isDark
-                              ? CupertinoColors.systemGrey
-                              : CupertinoColors.systemGrey2,
+                          color: isDark ? CupertinoColors.systemGrey : CupertinoColors.systemGrey2,
                         ),
                       ),
                     ],
                   ),
                 ),
-                Icon(
-                  CupertinoIcons.chevron_right,
-                  color: CupertinoColors.systemGrey,
-                  size: 20,
-                ),
+                Icon(CupertinoIcons.chevron_right, color: CupertinoColors.systemGrey, size: 20),
               ],
             ),
           ),
@@ -269,20 +237,11 @@ class AlertDialogDemoPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      item.title,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    Text(item.title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
                     const SizedBox(height: 4),
                     Text(
                       item.description,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                      style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.onSurfaceVariant),
                     ),
                   ],
                 ),
@@ -302,13 +261,7 @@ class AlertDialogDemoPage extends StatelessWidget {
       context: context,
       title: 'Simple Alert',
       message: 'This is a basic alert dialog with a title and message.',
-      actions: [
-        AlertAction(
-          title: 'OK',
-          onPressed: () {},
-          style: AlertActionStyle.defaultAction,
-        ),
-      ],
+      actions: [AlertAction(title: 'OK', onPressed: () {}, style: AlertActionStyle.defaultAction)],
     );
   }
 
@@ -321,16 +274,8 @@ class AlertDialogDemoPage extends StatelessWidget {
       iconSize: 48,
       iconColor: PlatformInfo.isIOS ? CupertinoColors.systemBlue : Colors.blue,
       actions: [
-        AlertAction(
-          title: 'Enable',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'Not Now',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Enable', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'Not Now', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
   }
@@ -342,16 +287,8 @@ class AlertDialogDemoPage extends StatelessWidget {
       message: 'Use this code to verify your identity:',
       oneTimeCode: '123456',
       actions: [
-        AlertAction(
-          title: 'Copy Code',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'Done',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Copy Code', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'Done', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
   }
@@ -388,19 +325,10 @@ class AlertDialogDemoPage extends StatelessWidget {
     AdaptiveAlertDialog.show(
       context: context,
       title: 'Update Available',
-      message:
-          'A new version of the app is available. Would you like to update now?',
+      message: 'A new version of the app is available. Would you like to update now?',
       actions: [
-        AlertAction(
-          title: 'Update',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'Later',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Update', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'Later', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
   }
@@ -409,22 +337,13 @@ class AlertDialogDemoPage extends StatelessWidget {
     AdaptiveAlertDialog.show(
       context: context,
       title: 'Delete Account',
-      message:
-          'This action cannot be undone. All your data will be permanently deleted.',
+      message: 'This action cannot be undone. All your data will be permanently deleted.',
       icon: 'trash.fill',
       iconSize: 48,
       iconColor: PlatformInfo.isIOS ? CupertinoColors.systemRed : Colors.red,
       actions: [
-        AlertAction(
-          title: 'Delete',
-          onPressed: () {},
-          style: AlertActionStyle.destructive,
-        ),
-        AlertAction(
-          title: 'Cancel',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Delete', onPressed: () {}, style: AlertActionStyle.destructive),
+        AlertAction(title: 'Cancel', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
   }
@@ -435,26 +354,10 @@ class AlertDialogDemoPage extends StatelessWidget {
       title: 'Choose Action',
       message: 'Select an action to perform on this item:',
       actions: [
-        AlertAction(
-          title: 'Save',
-          onPressed: () {},
-          style: AlertActionStyle.success,
-        ),
-        AlertAction(
-          title: 'Edit',
-          onPressed: () {},
-          style: AlertActionStyle.info,
-        ),
-        AlertAction(
-          title: 'Delete',
-          onPressed: () {},
-          style: AlertActionStyle.destructive,
-        ),
-        AlertAction(
-          title: 'Cancel',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Save', onPressed: () {}, style: AlertActionStyle.success),
+        AlertAction(title: 'Edit', onPressed: () {}, style: AlertActionStyle.info),
+        AlertAction(title: 'Delete', onPressed: () {}, style: AlertActionStyle.destructive),
+        AlertAction(title: 'Cancel', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
   }
@@ -466,16 +369,8 @@ class AlertDialogDemoPage extends StatelessWidget {
       message: 'Your changes have been saved successfully!',
       icon: 'checkmark.circle.fill',
       iconSize: 48,
-      iconColor: PlatformInfo.isIOS
-          ? CupertinoColors.systemGreen
-          : Colors.green,
-      actions: [
-        AlertAction(
-          title: 'Great!',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-      ],
+      iconColor: PlatformInfo.isIOS ? CupertinoColors.systemGreen : Colors.green,
+      actions: [AlertAction(title: 'Great!', onPressed: () {}, style: AlertActionStyle.primary)],
     );
   }
 
@@ -486,20 +381,10 @@ class AlertDialogDemoPage extends StatelessWidget {
       message: 'Your storage is almost full. Please free up some space.',
       icon: 'exclamationmark.triangle.fill',
       iconSize: 48,
-      iconColor: PlatformInfo.isIOS
-          ? CupertinoColors.systemOrange
-          : Colors.orange,
+      iconColor: PlatformInfo.isIOS ? CupertinoColors.systemOrange : Colors.orange,
       actions: [
-        AlertAction(
-          title: 'Manage Storage',
-          onPressed: () {},
-          style: AlertActionStyle.warning,
-        ),
-        AlertAction(
-          title: 'Later',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Manage Storage', onPressed: () {}, style: AlertActionStyle.warning),
+        AlertAction(title: 'Later', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
   }
@@ -508,22 +393,13 @@ class AlertDialogDemoPage extends StatelessWidget {
     AdaptiveAlertDialog.show(
       context: context,
       title: 'Error',
-      message:
-          'Failed to connect to the server. Please check your internet connection.',
+      message: 'Failed to connect to the server. Please check your internet connection.',
       icon: 'exclamationmark.circle.fill',
       iconSize: 48,
       iconColor: PlatformInfo.isIOS ? CupertinoColors.systemRed : Colors.red,
       actions: [
-        AlertAction(
-          title: 'Retry',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'Cancel',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Retry', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'Cancel', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
   }
@@ -532,37 +408,22 @@ class AlertDialogDemoPage extends StatelessWidget {
     AdaptiveAlertDialog.show(
       context: context,
       title: 'Information',
-      message:
-          'This feature requires iOS 15 or later. Please update your device.',
+      message: 'This feature requires iOS 15 or later. Please update your device.',
       icon: 'info.circle.fill',
       iconSize: 48,
       iconColor: PlatformInfo.isIOS ? CupertinoColors.systemBlue : Colors.blue,
-      actions: [
-        AlertAction(
-          title: 'OK',
-          onPressed: () {},
-          style: AlertActionStyle.defaultAction,
-        ),
-      ],
+      actions: [AlertAction(title: 'OK', onPressed: () {}, style: AlertActionStyle.defaultAction)],
     );
   }
 
   void _showConfirmationDialog(BuildContext context) {
     AdaptiveAlertDialog.show(
       context: context,
-      title: 'Save Changes?',
+      title: 'Save Chaasfnges?',
       message: 'Do you want to save your changes before leaving?',
       actions: [
-        AlertAction(
-          title: 'Yes',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'No',
-          onPressed: () {},
-          style: AlertActionStyle.destructive,
-        ),
+        AlertAction(title: 'Yes', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'No', onPressed: () {}, style: AlertActionStyle.destructive),
       ],
     );
   }
@@ -573,21 +434,9 @@ class AlertDialogDemoPage extends StatelessWidget {
       title: 'Save Document',
       message: 'How would you like to save this document?',
       actions: [
-        AlertAction(
-          title: 'Save to Cloud',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'Save Locally',
-          onPressed: () {},
-          style: AlertActionStyle.defaultAction,
-        ),
-        AlertAction(
-          title: 'Cancel',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Save to Cloud', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'Save Locally', onPressed: () {}, style: AlertActionStyle.defaultAction),
+        AlertAction(title: 'Cancel', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
   }
@@ -604,16 +453,8 @@ class AlertDialogDemoPage extends StatelessWidget {
           style: AlertActionStyle.primary,
           enabled: false, // Disabled action
         ),
-        AlertAction(
-          title: 'Read Terms',
-          onPressed: () {},
-          style: AlertActionStyle.defaultAction,
-        ),
-        AlertAction(
-          title: 'Cancel',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Read Terms', onPressed: () {}, style: AlertActionStyle.defaultAction),
+        AlertAction(title: 'Cancel', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
   }
@@ -627,16 +468,8 @@ class AlertDialogDemoPage extends StatelessWidget {
       message: 'Please enter your full name below:',
       input: const AdaptiveAlertDialogInput(placeholder: 'Full Name'),
       actions: [
-        AlertAction(
-          title: 'Submit',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'Cancel',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Submit', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'Cancel', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
 
@@ -650,34 +483,18 @@ class AlertDialogDemoPage extends StatelessWidget {
       context: context,
       title: 'Enter Password',
       message: 'Please enter your password to continue:',
-      icon: PlatformInfo.isIOS26OrHigher()
-          ? 'lock.fill'
-          : (PlatformInfo.isIOS ? CupertinoIcons.lock_fill : Icons.lock),
+      icon: PlatformInfo.isIOS26OrHigher() ? 'lock.fill' : (PlatformInfo.isIOS ? CupertinoIcons.lock_fill : Icons.lock),
       iconSize: 40,
       iconColor: PlatformInfo.isIOS ? CupertinoColors.systemBlue : Colors.blue,
-      input: const AdaptiveAlertDialogInput(
-        placeholder: 'Password',
-        obscureText: true,
-      ),
+      input: const AdaptiveAlertDialogInput(placeholder: 'Password', obscureText: true),
       actions: [
-        AlertAction(
-          title: 'Unlock',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'Cancel',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Unlock', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'Cancel', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
 
     if (context.mounted && result != null && result.isNotEmpty) {
-      _showResultSnackbar(
-        context,
-        'Password entered (${result.length} characters)',
-      );
+      _showResultSnackbar(context, 'Password entered (${result.length} characters)');
     }
   }
 
@@ -691,21 +508,10 @@ class AlertDialogDemoPage extends StatelessWidget {
           : (PlatformInfo.isIOS ? CupertinoIcons.mail_solid : Icons.email),
       iconSize: 40,
       iconColor: PlatformInfo.isIOS ? CupertinoColors.systemBlue : Colors.blue,
-      input: const AdaptiveAlertDialogInput(
-        placeholder: 'email@example.com',
-        keyboardType: TextInputType.emailAddress,
-      ),
+      input: const AdaptiveAlertDialogInput(placeholder: 'email@example.com', keyboardType: TextInputType.emailAddress),
       actions: [
-        AlertAction(
-          title: 'Continue',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'Cancel',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Continue', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'Cancel', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
 
@@ -723,24 +529,11 @@ class AlertDialogDemoPage extends StatelessWidget {
           ? 'phone.fill'
           : (PlatformInfo.isIOS ? CupertinoIcons.phone_fill : Icons.phone),
       iconSize: 40,
-      iconColor: PlatformInfo.isIOS
-          ? CupertinoColors.systemGreen
-          : Colors.green,
-      input: const AdaptiveAlertDialogInput(
-        placeholder: '+1 234 567 8900',
-        keyboardType: TextInputType.phone,
-      ),
+      iconColor: PlatformInfo.isIOS ? CupertinoColors.systemGreen : Colors.green,
+      input: const AdaptiveAlertDialogInput(placeholder: '+1 234 567 8900', keyboardType: TextInputType.phone),
       actions: [
-        AlertAction(
-          title: 'Save',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'Cancel',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Save', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'Cancel', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
 
@@ -756,29 +549,13 @@ class AlertDialogDemoPage extends StatelessWidget {
       message: 'Please enter the 6-digit verification code:',
       icon: PlatformInfo.isIOS26OrHigher()
           ? 'number.circle.fill'
-          : (PlatformInfo.isIOS
-                ? CupertinoIcons.number_circle_fill
-                : Icons.pin),
+          : (PlatformInfo.isIOS ? CupertinoIcons.number_circle_fill : Icons.pin),
       iconSize: 40,
-      iconColor: PlatformInfo.isIOS
-          ? CupertinoColors.systemOrange
-          : Colors.orange,
-      input: const AdaptiveAlertDialogInput(
-        placeholder: '000000',
-        keyboardType: TextInputType.number,
-        maxLength: 6,
-      ),
+      iconColor: PlatformInfo.isIOS ? CupertinoColors.systemOrange : Colors.orange,
+      input: const AdaptiveAlertDialogInput(placeholder: '000000', keyboardType: TextInputType.number, maxLength: 6),
       actions: [
-        AlertAction(
-          title: 'Verify',
-          onPressed: () {},
-          style: AlertActionStyle.primary,
-        ),
-        AlertAction(
-          title: 'Cancel',
-          onPressed: () {},
-          style: AlertActionStyle.cancel,
-        ),
+        AlertAction(title: 'Verify', onPressed: () {}, style: AlertActionStyle.primary),
+        AlertAction(title: 'Cancel', onPressed: () {}, style: AlertActionStyle.cancel),
       ],
     );
 
@@ -788,11 +565,7 @@ class AlertDialogDemoPage extends StatelessWidget {
   }
 
   void _showResultSnackbar(BuildContext context, String message) {
-    AdaptiveSnackBar.show(
-      context,
-      message: message,
-      type: AdaptiveSnackBarType.success,
-    );
+    AdaptiveSnackBar.show(context, message: message, type: AdaptiveSnackBarType.success);
   }
 }
 
@@ -801,9 +574,5 @@ class _DemoItem {
   final String description;
   final VoidCallback onTap;
 
-  const _DemoItem({
-    required this.title,
-    required this.description,
-    required this.onTap,
-  });
+  const _DemoItem({required this.title, required this.description, required this.onTap});
 }
