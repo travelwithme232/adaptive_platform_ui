@@ -66,6 +66,7 @@ class IOS26AlertDialog extends StatefulWidget {
     required this.title,
     this.message,
     required this.actions,
+    required this.isDark,
     this.icon,
     this.iconSize,
     this.iconColor,
@@ -76,6 +77,7 @@ class IOS26AlertDialog extends StatefulWidget {
 
   /// The title of the alert dialog
   final String title;
+  final bool isDark;
 
   /// Optional message text for additional context
   final String? message;
@@ -110,7 +112,7 @@ class _IOS26AlertDialogState extends State<IOS26AlertDialog> {
   bool? _lastIsDark;
   int? _lastTint;
 
-  bool get _isDark => false;
+  bool get _isDark => widget.isDark;
   Color? get _effectiveTint => CupertinoTheme.of(context).primaryColor;
 
   @override

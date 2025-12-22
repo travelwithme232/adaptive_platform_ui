@@ -51,6 +51,7 @@ class AdaptiveAlertDialog {
   static Future<void> show({
     required BuildContext context,
     required String title,
+    required bool isDark,
     String? message,
     required List<AlertAction> actions,
     dynamic icon,
@@ -80,7 +81,8 @@ class AdaptiveAlertDialog {
           iconSize: iconSize,
           iconColor: iconColor,
           oneTimeCode: oneTimeCode,
-          input: null, // No input for standard dialog
+          input: null,
+          isDark: isDark, // No input for standard dialog
         ),
       );
     }
@@ -202,6 +204,7 @@ class AdaptiveAlertDialog {
           iconColor: iconColor,
           oneTimeCode: null,
           input: input,
+          isDark: true,
         ),
       );
     }

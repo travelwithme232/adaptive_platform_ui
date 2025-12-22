@@ -463,12 +463,7 @@ class iOS26AlertDialogView: NSObject, FlutterPlatformView, UIGestureRecognizerDe
                 textColor = isDarkMode ? UIColor.systemOrange.withAlphaComponent(0.9) : .systemOrange
             case "info":
                 alertActionStyle = .default
-                // Use tint color if available, otherwise fall back to system blue
-                if let tintColor = tint {
-                    textColor = tintColor
-                } else {
-                    textColor = isDarkMode ? UIColor.systemBlue.withAlphaComponent(0.8) : .systemBlue
-                }
+                textColor = isDarkMode ? UIColor.systemBlue.withAlphaComponent(0.8) : .systemBlue
             case "disabled":
                 alertActionStyle = .default
                 textColor = isDarkMode ? UIColor.tertiaryLabel.withAlphaComponent(0.6) : .tertiaryLabel
@@ -547,6 +542,7 @@ class iOS26AlertDialogView: NSObject, FlutterPlatformView, UIGestureRecognizerDe
         // Set preferred action
         if let action = primaryAction {
             alert.preferredAction = action
+            alert.view.tintColor = UIColor.systemBlue
         } else if let action = cancelAction {
             alert.preferredAction = action
             alert.view.tintColor = UIColor.systemRed
@@ -620,7 +616,6 @@ class iOS26AlertDialogView: NSObject, FlutterPlatformView, UIGestureRecognizerDe
                 for subview in alert.view.subviews {
                     if let blurView = subview as? UIVisualEffectView {
                         blurView.effect = blurEffect
-                        blurView.alpha = 0.33
                         break
                     }
                 }
