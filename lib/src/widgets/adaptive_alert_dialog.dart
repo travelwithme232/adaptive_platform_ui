@@ -174,6 +174,7 @@ class AdaptiveAlertDialog {
   static Future<String?> inputShow({
     required BuildContext context,
     required String title,
+    required bool isDark,
     String? message,
     required List<AlertAction> actions,
     required AdaptiveAlertDialogInput input,
@@ -204,7 +205,7 @@ class AdaptiveAlertDialog {
           iconColor: iconColor,
           oneTimeCode: null,
           input: input,
-          isDark: true,
+          isDark: isDark,
         ),
       );
     }
