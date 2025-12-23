@@ -66,7 +66,6 @@ class IOS26AlertDialog extends StatefulWidget {
     required this.title,
     this.message,
     required this.actions,
-    required this.isDark,
     this.icon,
     this.iconSize,
     this.iconColor,
@@ -77,7 +76,6 @@ class IOS26AlertDialog extends StatefulWidget {
 
   /// The title of the alert dialog
   final String title;
-  final bool isDark;
 
   /// Optional message text for additional context
   final String? message;
@@ -112,7 +110,8 @@ class _IOS26AlertDialogState extends State<IOS26AlertDialog> {
   bool? _lastIsDark;
   int? _lastTint;
 
-  bool get _isDark => widget.isDark;
+  bool get _isDark =>
+      MediaQuery.platformBrightnessOf(context) == Brightness.dark;
   Color? get _effectiveTint => CupertinoTheme.of(context).primaryColor;
 
   @override
@@ -153,15 +152,20 @@ class _IOS26AlertDialogState extends State<IOS26AlertDialog> {
         'actionEnabled': widget.actions.map((a) => a.enabled).toList(),
         if (widget.icon != null) 'iconName': widget.icon,
         if (widget.iconSize != null) 'iconSize': widget.iconSize,
-        if (widget.iconColor != null) 'iconColor': _colorToARGB(widget.iconColor!),
+        if (widget.iconColor != null)
+          'iconColor': _colorToARGB(widget.iconColor!),
         if (widget.oneTimeCode != null) 'oneTimeCode': widget.oneTimeCode,
         if (widget.input != null) ...{
           'textFieldPlaceholder': widget.input!.placeholder,
-          if (widget.input!.initialValue != null) 'textFieldInitialValue': widget.input!.initialValue,
+          if (widget.input!.initialValue != null)
+            'textFieldInitialValue': widget.input!.initialValue,
           'textFieldObscureText': widget.input!.obscureText,
-          if (widget.input!.maxLength != null) 'textFieldMaxLength': widget.input!.maxLength,
+          if (widget.input!.maxLength != null)
+            'textFieldMaxLength': widget.input!.maxLength,
           if (widget.input!.keyboardType != null)
-            'textFieldKeyboardType': _keyboardTypeToString(widget.input!.keyboardType!),
+            'textFieldKeyboardType': _keyboardTypeToString(
+              widget.input!.keyboardType!,
+            ),
         },
         'alertStyle': 'glass',
         'isDark': _isDark,

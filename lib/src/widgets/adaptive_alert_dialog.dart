@@ -51,7 +51,6 @@ class AdaptiveAlertDialog {
   static Future<void> show({
     required BuildContext context,
     required String title,
-    required bool isDark,
     String? message,
     required List<AlertAction> actions,
     dynamic icon,
@@ -81,8 +80,7 @@ class AdaptiveAlertDialog {
           iconSize: iconSize,
           iconColor: iconColor,
           oneTimeCode: oneTimeCode,
-          input: null,
-          isDark: isDark, // No input for standard dialog
+          input: null, // No input for standard dialog
         ),
       );
     }
@@ -174,7 +172,6 @@ class AdaptiveAlertDialog {
   static Future<String?> inputShow({
     required BuildContext context,
     required String title,
-    required bool isDark,
     String? message,
     required List<AlertAction> actions,
     required AdaptiveAlertDialogInput input,
@@ -195,7 +192,6 @@ class AdaptiveAlertDialog {
       return showCupertinoDialog<String?>(
         context: context,
         barrierColor: Colors.transparent,
-
         builder: (context) => IOS26AlertDialog(
           title: title,
           message: message,
@@ -205,7 +201,6 @@ class AdaptiveAlertDialog {
           iconColor: iconColor,
           oneTimeCode: null,
           input: input,
-          isDark: isDark,
         ),
       );
     }

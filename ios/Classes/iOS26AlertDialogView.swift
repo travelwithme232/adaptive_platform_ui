@@ -193,16 +193,13 @@ class iOS26AlertDialogView: NSObject, FlutterPlatformView, UIGestureRecognizerDe
             alert.view.layer.shadowRadius = 10
             alert.view.layer.masksToBounds = false
 
-            // Add glass effect with proper iOS materials (using regular blur for maximum transparency)
-            // Using regular blur style instead of material for thinner appearance
-           let blurEffect = UIBlurEffect(style: isDark ? .systemThinMaterialDark : .systemThinMaterialLight)
+            let blurEffect = UIBlurEffect(style: isDark ? .systemThinMaterialDark : .systemThinMaterialLight)
             let blurView = UIVisualEffectView(effect: blurEffect)
             blurView.frame = alert.view.bounds
             blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             blurView.layer.cornerRadius = 28.0
             blurView.layer.cornerCurve = .continuous
             blurView.clipsToBounds = true
-            // Reduce opacity to make it even thinner
 
             // Insert blur view behind content
             alert.view.insertSubview(blurView, at: 0)
@@ -432,7 +429,7 @@ class iOS26AlertDialogView: NSObject, FlutterPlatformView, UIGestureRecognizerDe
 
             let isDarkMode: Bool
             if #available(iOS 13.0, *) {
-                isDarkMode = isDark
+                isDarkMode = alert.traitCollection.userInterfaceStyle == .dark
             } else {
                 isDarkMode = false
             }
