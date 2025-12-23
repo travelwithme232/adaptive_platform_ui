@@ -429,7 +429,7 @@ class iOS26AlertDialogView: NSObject, FlutterPlatformView, UIGestureRecognizerDe
 
             let isDarkMode: Bool
             if #available(iOS 13.0, *) {
-                isDarkMode = alert.traitCollection.userInterfaceStyle == .dark
+                isDarkMode = isDark
             } else {
                 isDarkMode = false
             }
