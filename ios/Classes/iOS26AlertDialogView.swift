@@ -180,6 +180,9 @@ class iOS26AlertDialogView: NSObject, FlutterPlatformView, UIGestureRecognizerDe
         alertController = TintAdjustingAlertController(title: title, message: message, preferredStyle: .alert)
 
         guard let alert = alertController else { return }
+        if #available(iOS 13.0, *) {
+            alert.overrideUserInterfaceStyle = isDark ? .dark : .light
+        }
 
         // Apply liquid glass styling for iOS 15+
         if #available(iOS 15.0, *) {
@@ -195,6 +198,7 @@ class iOS26AlertDialogView: NSObject, FlutterPlatformView, UIGestureRecognizerDe
 
             let blurEffect = UIBlurEffect(style: isDark ? .systemThinMaterialDark : .systemThinMaterialLight)
             let blurView = UIVisualEffectView(effect: blurEffect)
+
             blurView.frame = alert.view.bounds
             blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             blurView.layer.cornerRadius = 28.0
