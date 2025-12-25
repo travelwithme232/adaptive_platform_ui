@@ -609,7 +609,9 @@ class iOS26AlertDialogView: NSObject, FlutterPlatformView, UIGestureRecognizerDe
 
     private func updateBrightness(isDark: Bool) {
         guard let alert = alertController else { return }
-
+        if #available(iOS 13.0, *) {
+            alert.overrideUserInterfaceStyle = isDark ? .dark : .light
+        }
         if #available(iOS 15.0, *) {
             if alertStyle == "glass" {
                 let blurEffect = UIBlurEffect(style: isDark ? .systemThinMaterialDark : .systemThinMaterialLight)
