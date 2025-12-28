@@ -281,7 +281,7 @@ class _IOS26AlertDialogState extends State<IOS26AlertDialog> {
 
     if (_lastTint != tint && tint != null) {
       try {
-        await ch.invokeMethod('setStyle', {'tint': tint});
+        // await ch.invokeMethod('setStyle', {'tint': tint});
         _lastTint = tint;
       } catch (e) {
         // Ignore if method not implemented
